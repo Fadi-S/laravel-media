@@ -14,29 +14,24 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique();
+            $table->string("name")->unique(); /* ex: Pope Shenouda the third, Ibrahim Ayad */
             $table->string("slug")->unique();
             $table->text("photo")->nullable();
             $table->text("cover_photo")->nullable();
-            $table->text("bio")->nullable();
+            $table->text("bio")->nullable(); /* Biography */
             $table->date("birthday")->nullable();
-            $table->date("passed_away")->nullable();
+            $table->date("passed_away")->nullable(); /* death day (law etnaya7) */
             $table->integer("created_by");
             $table->integer("edited_by")->nullable();
-            $table->integer("person_type_id");
+            $table->integer("person_type_id"); /* ex: Singer, Choir, Pope */
             $table->timestamps();
         });
 
         Schema::create('media_person', function (Blueprint $table) {
             $table->integer("media_id");
             $table->integer("person_id");
+            $table->integer("type");
             $table->primary(["media_id", "person_id"]);
-        });
-
-        Schema::create("book_person", function(Blueprint $table) {
-            $table->integer("book_id");
-            $table->integer("person_id");
-            $table->primary(['book_id', 'person_id']);
         });
     }
 
@@ -49,6 +44,5 @@ class CreatePeopleTable extends Migration
     {
         Schema::dropIfExists('people');
         Schema::dropIfExists('media_person');
-        Schema::dropIfExists('book_person');
     }
 }

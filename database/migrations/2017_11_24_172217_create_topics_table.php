@@ -15,7 +15,7 @@ class CreateTopicsTable extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique();
+            $table->string("name")->unique(); /* ex: love, faith, kindness */
             $table->string("slug")->unique();
             $table->timestamps();
         });

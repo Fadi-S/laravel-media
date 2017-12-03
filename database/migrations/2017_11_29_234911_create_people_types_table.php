@@ -15,7 +15,7 @@ class CreatePeopleTypesTable extends Migration
     {
         Schema::create('people_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique();
+            $table->string("name")->unique(); /* Singer, Pope */
             $table->string("slug")->unique();
             $table->timestamps();
         });

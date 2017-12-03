@@ -17,9 +17,9 @@ class CreateUsersTable extends Migration
             $table->string("name");
             $table->string("email")->unique();
             $table->string("password");
-            $table->timestamp("last_activity");
-            $table->timestamp("last_login");
-            $table->rememberToken();
+            $table->timestamp("last_activity"); /* Last activity time to check if user is online */
+            $table->timestamp("last_login"); /* To check if user uses the site constantly */
+            $table->rememberToken(); /* bet5ali el user yefdal logged in */
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMediaTypesTable extends Migration
+class CreateFileTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateMediaTypesTable extends Migration
     {
         Schema::create('media_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique();
+            $table->string("name")->unique(); /* Hymns, Taranim, Preachs(3ezat), Videos */
             $table->string("slug")->unique();
             $table->timestamps();
         });

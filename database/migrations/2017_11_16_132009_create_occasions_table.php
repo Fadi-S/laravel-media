@@ -14,7 +14,7 @@ class CreateOccasionsTable extends Migration
     {
         Schema::create('occasions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique();
+            $table->string("name")->unique(); /* ex: chirstmas, easter */
             $table->string("slug")->unique();
             $table->timestamps();
         });

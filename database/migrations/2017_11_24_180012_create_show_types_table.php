@@ -15,7 +15,7 @@ class CreateShowTypesTable extends Migration
     {
         Schema::create('show_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->name("name")->unique();
+            $table->string("name")->unique(); /* Hymns, Preachs(3ezat), Taranim, Videos */
             $table->timestamps();
         });
     }

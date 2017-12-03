@@ -16,7 +16,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->integer("creator_id");
             $table->integer("editor_id");
-            $table->string("name")->unique();
+            $table->string("name")->unique(); /* ex: god, church */
             $table->timestamps();
 
             $table->foreign("creator_id")->references("id")->on("admins");
@@ -26,8 +26,7 @@ class CreateTagsTable extends Migration
         Schema::create('tag_tagged', function (Blueprint $table) {
             $table->integer('tag_id');
             $table->integer("tagged_id");
-            $table->string("tagged_type"); /* People, Media, Books, Articles */
-            $table->timestamps();
+            $table->primary(['tag_id', 'tagged_id']);
         });
 
     }
