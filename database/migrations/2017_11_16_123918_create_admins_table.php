@@ -14,8 +14,10 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique(); /* Name used to login with (zay el email fel users table) */
             $table->string("display_name"); /* Name displayed to admins */
+            $table->string("name")->unique(); /* Unique name */
+            $table->string("email")->unique(); /* Email used to login with */
+            $table->string("phone")->unique(); /* Used to login */
             $table->text("password");
             $table->text("picture")->nullable(); /* profile picture */
             $table->timestamp("last_login")->nullable(); /* zay el users */

@@ -12,6 +12,7 @@ class AdminDatabaseSeeder extends Seeder
     public function run()
     {
         \App\Admin::insert(['display_name'=>"Administrator", 'name'=>'admin',
-            'password'=>bcrypt('123456'), "created_at"=>Carbon\Carbon::now(), "updated_at"=>Carbon\Carbon::now()]);
+            'email'=>'admin@stgtube.com', 'phone'=>'01111111111', 'password'=>bcrypt('123456'),
+            "created_at"=>Carbon\Carbon::now(), "updated_at"=>Carbon\Carbon::now()]);
     }
 }

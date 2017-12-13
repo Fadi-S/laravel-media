@@ -46,8 +46,16 @@ trait AuthenticatesAdmins
 
     protected function attemptLogin(Request $request)
     {
+    if (is_numeric($request->input($this->username())))
+        $field = 'phone';
+    else if (filter_var($request->input($this->username()), FILTER_VALIDATE_EMAIL))
+        $field = 'email';
+    else
+        $field = "name";
+
+    $request->merge([$field => $request->input('login')]);
         return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
+            $request->only($field, 'password'), $request->filled('remember')
         );
     }
 
@@ -80,7 +88,7 @@ trait AuthenticatesAdmins
 
     public function username()
     {
-        return 'name';
+        return 'login';
     }
 
     public function logout(Request $request)

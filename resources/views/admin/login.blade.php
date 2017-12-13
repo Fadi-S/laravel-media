@@ -23,8 +23,8 @@
     <form action="{{ url('admin/login') }}" method="post">
         {{ csrf_field() }}
         <div class="col-md-4 mx-auto">
-            <label for="name" class="form-label">Name: </label>
-                <input name="name" value="{{ old('name') }}" type="text" class="form-control">
+            <label for="login" class="form-label">Name: </label>
+                <input name="login" value="{{ old('login') }}" type="text" class="form-control">
 
             <br>
             <label for="password" class="form-label">Password: </label>
@@ -32,7 +32,7 @@
             <br>
             <center>
                 @if(!$errors->isEmpty())
-                <div class="error">{{ $errors->first('name') }}</div>
+                <div class="error">{{ $errors->first('login') }}</div>
                 <br>
                 @endif
                 <label class="checkbox"><input {{ (old('remember') ? "checked" : "") }} name="remember" type="checkbox"> Remember Me</label>
