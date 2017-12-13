@@ -17,9 +17,9 @@ class CreateAdminsTable extends Migration
             $table->string("name")->unique(); /* Name used to login with (zay el email fel users table) */
             $table->string("display_name"); /* Name displayed to admins */
             $table->text("password");
-            $table->text("picture"); /* profile picture */
-            $table->timestamp("last_login"); /* zay el users */
-            $table->timestamp("last_activity"); /* zay el users */
+            $table->text("picture")->nullable(); /* profile picture */
+            $table->timestamp("last_login")->nullable(); /* zay el users */
+            $table->timestamp("last_activity")->nullable(); /* zay el users */
             $table->rememberToken(); /* 7aga bet5ali el user yefdal logged in */
             $table->timestamps();
         });
