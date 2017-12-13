@@ -35,6 +35,6 @@ class CreateTopicsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('topics');
-        Schema::dropIfExists('preach_topic');
+        Schema::dropIfExists('media_topic');
     }
 }

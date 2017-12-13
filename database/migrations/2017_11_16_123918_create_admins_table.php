@@ -20,6 +20,7 @@ class CreateAdminsTable extends Migration
             $table->string("phone")->unique(); /* Used to login */
             $table->text("password");
             $table->text("picture")->nullable(); /* profile picture */
+            $table->boolean("active")->default(1);
             $table->timestamp("last_login")->nullable(); /* zay el users */
             $table->timestamp("last_activity")->nullable(); /* zay el users */
             $table->rememberToken(); /* 7aga bet5ali el user yefdal logged in */
