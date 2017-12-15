@@ -17,12 +17,6 @@ class CreateRolesTable extends Migration
             $table->string("name")->unique(); /* ex: editor, creator */
             $table->timestamps();
         });
-
-        Schema::create('admin_role', function(Blueprint $table) {
-           $table->integer("admin_id");
-           $table->integer("role_id");
-           $table->primary(['admin_id', 'role_id']);
-        });
     }
 
     /**
@@ -33,6 +27,5 @@ class CreateRolesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('roles');
-        Schema::dropIfExists("admin_role");
     }
 }

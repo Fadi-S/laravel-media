@@ -2,12 +2,11 @@
 
 
 Route::get('/', function () {
-    //Mail::send("welcome", [], function($message) { $message->to('fadisarwat@yahoo.com')->subject("Test"); });
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function() {
-    Route::get('/', 'Admin\AdminsController@index')->name("dashboard");
+Route::prefix('backend')->group(function() {
+    Route::get('/', 'Admin\PagesController@index')->name("dashboard");
 
     /* Login */
     Route::get('login', 'Admin\Auth\LoginController@showLoginForm');
@@ -19,4 +18,7 @@ Route::prefix('admin')->group(function() {
     Route::post('reset/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::get('reset/change/{token}', 'Admin\Auth\ResetPasswordController@showResetForm');
     Route::post('reset/change', 'Admin\Auth\ResetPasswordController@reset');
+
+    /* Admins */
+    Route::resource("admins", 'Admin\AdminsController');
 });

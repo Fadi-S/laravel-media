@@ -11,8 +11,7 @@ class AdminDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Admin::insert(['display_name'=>"Administrator", 'name'=>'admin',
-            'email'=>'admin@stgtube.com', 'phone'=>'01111111111', 'password'=>bcrypt('123456'),
-            "created_at"=>Carbon\Carbon::now(), "updated_at"=>Carbon\Carbon::now()]);
+        \App\Admin::create(['display_name'=>"Administrator", 'name'=>'admin', 'role_id'=>\App\Role::first()->id,
+            'email'=>'admin@stgtube.com', 'phone'=>'01111111111', 'password'=>'123456']);
     }
 }

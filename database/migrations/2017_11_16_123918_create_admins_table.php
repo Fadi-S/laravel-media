@@ -15,6 +15,7 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->string("display_name"); /* Name displayed to admins */
+            $table->integer("role_id"); /* Editor, Writer, Admin */
             $table->string("name")->unique(); /* Unique name */
             $table->string("email")->unique(); /* Email used to login with */
             $table->string("phone")->unique(); /* Used to login */
@@ -25,6 +26,8 @@ class CreateAdminsTable extends Migration
             $table->timestamp("last_activity")->nullable(); /* zay el users */
             $table->rememberToken(); /* 7aga bet5ali el user yefdal logged in */
             $table->timestamps();
+
+            $table->foreign("role_id")->references("id")->on("roles");
         });
     }
 

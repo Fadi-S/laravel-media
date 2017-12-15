@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<title>Stgtube Admin Reset Password</title>
+<title>Stgtube Backend Reset Password</title>
 <style>
     .form-label {
         font-weight: bold;
@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <form role="form" method="POST" action="{{ url('admin/reset/email') }}">
+                    <form role="form" method="POST" action="{{ url('backend/reset/email') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

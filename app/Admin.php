@@ -13,7 +13,7 @@ class Admin extends Authenticatable
     protected $table = "admins";
     protected $dates = ['last_activity', 'last_login'];
     protected $hidden = ['password', 'remember_token'];
-    protected $fillable = ['name', 'display_name', 'phone', 'email', 'password', 'picture'];
+    protected $fillable = ['name', 'role_id', 'display_name', 'phone', 'email', 'password', 'picture'];
 
     public function setPasswordAttribute($password)
     {
@@ -23,5 +23,15 @@ class Admin extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AdminResetPasswordNotification($token));
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 }

@@ -1,6 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<title>Stgtube Admin Login</title>
+<title>Stgtube Backend Login</title>
 <style>
     .form-label {
         font-weight: bold;
@@ -22,7 +22,7 @@
 <div class="container">
     <center><h1>Login</h1></center>
     <br>
-    <form action="{{ url('admin/login') }}" method="post">
+    <form action="{{ url('backend/login') }}" method="post">
         {{ csrf_field() }}
         <div class="col-md-4 mx-auto">
             <label for="login" class="form-label">Name: </label>
@@ -43,7 +43,7 @@
                     Login
                 </button>
                 <br><br>
-                <a href="{{ url('admin/reset/send') }}" class="btn-link">Forgot Your Password?</a>
+                <a href="{{ url('backend/reset/send') }}" class="btn-link">Forgot Your Password?</a>
             </center>
         </div>
 
