@@ -7,29 +7,27 @@
         }
     </style>
     <center><h1>All Admins</h1></center>
-    <a href="{{ url("backend/admins/create") }}" class="btn btn-success">Create Admin</a>
+    <a href="{{ url(\Config::get("admin")."/admins/create") }}" class="btn btn-success">Create Admin</a>
     <br><br>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Display Name</th>
-                <th>Unique Name</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Role</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach($admins as $admin)
-                <tr onclick="window.location.href='{{ url("backend/admins/@$admin->name/") }}'">
-                    <td>{{ $admin->display_name }}</td>
+                <tr onclick="window.location.href='{{ url(\Config::get("admin")."/admins/$admin->slug/") }}'">
                     <td>{{ $admin->name }}</td>
                     <td>{{ $admin->email }}</td>
                     <td>{{ $admin->phone }}</td>
-                    <td>{{ $admin->role->name }}</td>
-                    <td><a href="{{ url("backend/admins/@$admin->name/edit") }}" class="btn btn-info">Edit</a></td>
+                    <td><a href="{{ url(\Config::get("admin")."/admins/$admin->slug/edit") }}" class="btn btn-info">Edit</a></td>
+                    <td><a></a></td>
                 </tr>
             @endforeach
         </tbody>

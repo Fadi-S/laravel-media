@@ -1,16 +1,18 @@
-@extends("admin.layout")
+@extends("admin.layouts.master")
+
+@section("title")<title>Stgtube Backend | Dashboard</title>@endsection
 
 @section("content")
-<div class="container">
-    Display name: {{ Auth::guard("admin")->user()->display_name }}
-    <br>
-    Unique Name: {{ Auth::guard("admin")->user()->name }}
-    <br>
-    Email: {{ Auth::guard("admin")->user()->email }}
-    <br>
-    Role: {{ Auth::guard("admin")->user()->role->name }}
-    <br>
-    <a href="{{ url('backend/admins') }}" class="btn-link">Admins</a>
-    <form action="{{ url('backend/logout') }}" method="post">{{ csrf_field() }}<button type="submit" class="btn btn-info">Logout</button></form>
-</div>
+    <h4 class="page-title">Blank Page</h4>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">Ubold</a>
+        </li>
+        <li>
+            <a href="#">Pages</a>
+        </li>
+        <li class="active">
+            Blank Page
+        </li>
+    </ol>
 @endsection

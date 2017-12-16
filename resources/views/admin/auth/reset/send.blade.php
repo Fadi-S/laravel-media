@@ -1,51 +1,45 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<title>Stgtube Backend Reset Password</title>
-<style>
-    .form-label {
-        font-weight: bold;
-    }
-    h1{
-        text-decoration: underline;
-    }
-    .error{
-        font-weight: bold;
-        color: #c41313;
-    }
-</style>
-<div class="container">
-            <center>
-                <h1>Reset Password</h1>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@extends("admin.auth.layout")
 
-                    <form role="form" method="POST" action="{{ url('backend/reset/email') }}">
-                        {{ csrf_field() }}
+@section("title")<title>Stgtube Backend | Send Reset Link</title>@endsection
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="form-label">E-Mail</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+@section("content")
+    <div class=" card-box">
+        <div class="panel-heading">
+            <h3 class="text-center"> @lang("messages.reset_password") </h3>
+        </div>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <div class="panel-body">
+            <form role="form" method="POST" class="text-center" action="{{ url(\Config::get("admin").'/reset/email') }}">
+                {{ csrf_field() }}
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @else
+                    <div class="alert alert-info">
+                        @lang("messages.reset_instructions")
+                    </div>
+                @endif
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-success">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="form-group m-b-0{{ $errors->has('email') ? ' has-error has-feedback' : '' }}">
+                    <div class="input-group">
+                        <input type="email" name="email" class="form-control" required placeholder="@lang("messages.email")" >
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-pink w-sm waves-effect waves-light">
+                                @lang("messages.reset")
+                            </button>
+                        </span>
+                    </div>
                 </div>
-                </center>
-</div>
+                <br>
+                @if ($errors->has('email'))
+                    <span class="alert alert-danger">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+
+            </form>
+        </div>
+    </div>
+
+@endsection

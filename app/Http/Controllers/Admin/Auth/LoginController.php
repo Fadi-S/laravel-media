@@ -16,7 +16,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/backend';
+    protected $redirectTo;
 
     public function showLoginForm()
     {
@@ -35,7 +35,7 @@ class LoginController extends Controller
         else if (filter_var($request->input($this->username()), FILTER_VALIDATE_EMAIL))
             $field = 'email';
         else
-            $field = "name";
+            $field = "slug";
 
         $request->merge([$field => $request->input('login')]);
         return $this->guard()->attempt(
@@ -49,7 +49,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/backend/login');
+        return redirect(\Config::get("admin").'/login');
     }
 
     protected function guard()
@@ -62,6 +62,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->redirectTo = \Config::get("admin");
         $this->middleware('admin_guest')->except('logout');
     }
 }

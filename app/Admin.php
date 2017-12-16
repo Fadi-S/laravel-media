@@ -13,7 +13,7 @@ class Admin extends Authenticatable
     protected $table = "admins";
     protected $dates = ['last_activity', 'last_login'];
     protected $hidden = ['password', 'remember_token'];
-    protected $fillable = ['name', 'role_id', 'display_name', 'phone', 'email', 'password', 'picture'];
+    protected $fillable = ['slug', 'role_id', 'active', 'name', 'phone', 'email', 'password', 'picture'];
 
     public function setPasswordAttribute($password)
     {
@@ -32,6 +32,6 @@ class Admin extends Authenticatable
 
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'slug';
     }
 }

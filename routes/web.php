@@ -5,7 +5,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('backend')->group(function() {
+Route::prefix(Config::get("admin"))->group(function() {
     Route::get('/', 'Admin\PagesController@index')->name("dashboard");
 
     /* Login */

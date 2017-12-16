@@ -1,51 +1,57 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<title>Stgtube Backend Login</title>
-<style>
-    .form-label {
-        font-weight: bold;
-    }
-    h1{
-        text-decoration: underline;
-    }
-    .error{
-        font-weight: bold;
-        color: #c41313;
-    }
-    .type-error:focus, .type-error {
-        border-color: rgba(229, 3, 0, 0.8)!important;
-        box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(196, 20, 19, 0.79)!important;
-        outline: 0 none;
-    }
-</style>
-<br>
-<div class="container">
-    <center><h1>Login</h1></center>
-    <br>
-    <form action="{{ url('backend/login') }}" method="post">
-        {{ csrf_field() }}
-        <div class="col-md-4 mx-auto">
-            <label for="login" class="form-label">Name: </label>
-                <input name="login" value="{{ old('login') }}" type="text" class="form-control">
+@extends("admin.auth.layout")
 
-            <br>
-            <label for="password" class="form-label">Password: </label>
-            <input name="password" type="password" class="form-control">
-            <br>
-            <center>
-                @if(!$errors->isEmpty())
-                <div class="error">{{ $errors->first('login') }}</div>
-                <br>
-                @endif
-                <label class="checkbox"><input {{ (old('remember') ? "checked" : "") }} name="remember" type="checkbox"> Remember Me</label>
-            <br>
-                <button class="btn btn-success" type="submit">
-                    Login
-                </button>
-                <br><br>
-                <a href="{{ url('backend/reset/send') }}" class="btn-link">Forgot Your Password?</a>
-            </center>
+@section("title")<title>Stgtube Backend | Login</title>@endsection
+
+@section("content")
+    <div class="card-box">
+        <div class="panel-heading">
+            <h3 class="text-center"> Sign In to <strong class="text-custom">Stgtube</strong> </h3>
         </div>
 
-    </form>
-</div>
+
+        <div class="panel-body">
+            <form class="form-horizontal m-t-20" method="POST" action="{{ url(\Config::get("admin").'/login') }}">
+                {{ csrf_field() }}
+                <div class="form-group{{ $errors->has('login') ? ' has-error has-feedback' : '' }}">
+                    <div class="col-xs-12">
+                        <input class="form-control" value="{{ old('login') }}" name="login" type="text" required="" placeholder="@lang('messages.name')">
+                    </div>
+                </div>
+
+                @if(!$errors->isEmpty())
+                    <div class="error">{{ $errors->first('login') }}</div>
+                @endif
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control" name="password" type="password" required="" placeholder="@lang('messages.password')">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <div class="checkbox checkbox-pink">
+                            <input id="checkbox-signup" {{ (old('remember') ? "checked" : "") }} name="remember" type="checkbox">
+                            <label for="checkbox-signup">
+                                @lang("messages.remember")
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <button class="btn btn-pink btn-block text-uppercase waves-effect waves-light" type="submit">@lang('messages.login')</button>
+                    </div>
+                </div>
+
+                <div class="form-group m-t-30 m-b-0">
+                    <div class="col-sm-12">
+                        <a href="{{ url(\Config::get("admin").'/reset/send') }}" class="text-dark"><i class="fa fa-lock m-r-5"></i> @lang('messages.forgot_password')</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+@endsection

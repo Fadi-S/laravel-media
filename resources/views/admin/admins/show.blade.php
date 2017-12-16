@@ -1,15 +1,15 @@
 @extends("admin.layout")
 
 @section("content")
-    Display name: {{ $admin->display_name }}
+    Name: {{ $admin->name }}
     <br>
-    Unique Name: {{ $admin->name }}
+    Slug: {{ $admin->slug }}
     <br>
     Email: {{ $admin->email }}
     <br>
     Role: {{ $admin->role->name }}
     <br>
-    <a href="{{ url("backend/admins/@$admin->name/edit") }}" class="btn btn-info">Edit</a>
+    <a href="{{ url(\Config::get("admin")."/admins/$admin->slug/edit") }}" class="btn btn-info">Edit</a>
     <br>
-    <a href="{{ url("backend/admins/@$admin->name/delete") }}" class="btn btn-danger">Delete</a>
+    <a href="{{ url(\Config::get("admin")."/admins/$admin->slug/delete") }}" class="btn btn-danger">Delete</a>
 @endsection

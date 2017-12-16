@@ -15,6 +15,6 @@ class PagesController extends Controller
 
     public function index()
     {
-        return view("admin.index", ['title'=>"Stgtube | ".\Auth::guard("admin")->user()->display_name]);
+        return view("admin.index", ['title'=>"Stgtube | ".\Auth::guard("admin")->user()->name]);
     }
 }

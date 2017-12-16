@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequest;
-use Illuminate\Http\Request;
 
 class AdminsController extends Controller
 {
@@ -18,7 +17,7 @@ class AdminsController extends Controller
     /* Showing forms methods */
     public function index()
     {
-        $admins = Admin::with("role")->get();
+        $admins = Admin::get();
         return view("admin.admins.index", compact("admins"))->with("title", "Stgtube Backend | Admins");
     }
 
@@ -29,12 +28,12 @@ class AdminsController extends Controller
 
     public function create()
     {
-        return view("admin.admins.create")->with("title", "Stgtube Backend | Create Admin");
+        return view("admin.admins.create")->with(["title" => "Stgtube Backend | Create Admin", "create"=>true]);
     }
 
     public function edit(Admin $admin)
     {
-        return view("admin.admins.edit", compact('admin'))->with("title", "Stgtube Backend | Edit $admin->display_name");
+        return view("admin.admins.edit", compact('admin'))->with(["title"=> "Stgtube Backend | Edit $admin->name", "create"=>false]);
     }
 
     /* Backend methods */
@@ -42,19 +41,18 @@ class AdminsController extends Controller
     public function store(AdminRequest $request)
     {
         $admin = Admin::create($request->all());
-        return redirect("backend/admins/@".$admin->name."/edit");
+        return redirect(\Config::get("admin")."/admins/".$admin->slug."/edit");
     }
 
     public function update(AdminRequest $request, Admin $admin)
     {
-        if($request->password == "") $request = $request->except("password");
-        $admin->update($request->all());
-        return redirect("backend/admins/@".$admin->name."/edit");
+        $admin->update($request->except("password"));
+        return redirect(\Config::get("admin")."/admins/".$admin->slug."/edit");
     }
 
-    public function delete(Admin $admin)
+    public function destroy(Admin $admin)
     {
         $admin->delete();
-        return redirect("backend/admins/");
+        return redirect(\Config::get("admin")."/admins/");
     }
 }

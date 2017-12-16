@@ -1,81 +1,54 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<title>Stgtube Backend Reset Password</title>
-<style>
-    .form-label {
-        font-weight: bold;
-    }
-    h1{
-        text-decoration: underline;
-    }
-    .help-block{
-        color: #c41313;
-    }
-    .error:focus, .error {
-        border-color: rgba(229, 3, 0, 0.8)!important;
-        box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(196, 20, 19, 0.79)!important;
-        outline: 0 none;
-    }
-</style>
-<div class="container">
-    <center>
-        <h1>Change Password</h1>
-        <div class="panel-body">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+@extends("admin.auth.layout")
 
-            <form role="form" method="POST" action="{{ url('backend/reset/change') }}">
+@section("title")<title>Stgtube Backend | Reset Password</title>@endsection
+
+@section("content")
+    <div class="card-box">
+        <div class="panel-heading">
+            <h3 class="text-center"> @lang("messages.change_pass") </h3>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal m-t-20" method="POST" action="{{ url(\Config::get("admin").'/reset/change') }}">
                 {{ csrf_field() }}
                 <input type="hidden" name="token" value="{{ $token }}">
 
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email" class="col-md-4 form-label">E-Mail</label>
-
-                    <div class="col-md-6">
-                        <input type="email" class="form-control{{ $errors->has('email') ? ' error' : '' }}" name="email" value="{{ $email or old('email') }}" required autofocus>
-
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
+                <div class="form-group{{ $errors->has('email') ? ' has-error has-feedback' : '' }}">
+                    <div class="col-xs-12">
+                        <input class="form-control" value="{{ old('email') }}" name="email" type="email" required="" placeholder="@lang('messages.email')">
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password" class="form-label">New Password</label>
-                    <div class="col-md-6">
-                        <input type="password" class="form-control{{ $errors->has('password') ? ' error' : '' }}" name="password" required>
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
+                @if(!$errors->isEmpty())
+                    <div class="error">{{ $errors->first('email') }}</div>
+                @endif
+
+                <div class="form-group{{ $errors->has('password') ? ' has-error has-feedback' : '' }}">
+                    <div class="col-xs-12">
+                        <input class="form-control" name="password" type="password" required="" placeholder="@lang('messages.password')">
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                    <label for="password" class="form-label">Confirm New Password</label>
-                    <div class="col-md-6">
-                        <input type="password" class="form-control" name="password_confirmation" required>
-                        @if ($errors->has('password_confirmation'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
 
                 <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" class="btn btn-success">
-                            Change Password
-                        </button>
+                    <div class="col-xs-12">
+                        <input class="form-control" name="password_confirmation" type="password" required="" placeholder="@lang("messages.confirm_pass")">
                     </div>
                 </div>
+
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <button class="btn btn-pink btn-block text-uppercase waves-effect waves-light" type="submit">@lang("messages.change_pass")</button>
+                    </div>
+                </div>
+
             </form>
+
         </div>
-    </center>
-</div>
+    </div>
+@endsection

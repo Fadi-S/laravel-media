@@ -17,7 +17,7 @@ class ResetPasswordController extends Controller
     /**
      * Where to redirect users after resetting their password.
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo;
 
     public function showResetForm(Request $request, $token = null)
     {
@@ -47,6 +47,7 @@ class ResetPasswordController extends Controller
 
     public function __construct()
     {
+        $this->redirectTo = \Config::get("admin");
         $this->middleware('admin_guest');
     }
 }
