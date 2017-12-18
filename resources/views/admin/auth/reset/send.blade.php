@@ -1,6 +1,6 @@
 @extends("admin.auth.layout")
 
-@section("title")<title>Stgtube Backend | Send Reset Link</title>@endsection
+@section("title")<title>@lang("messages.title") | @lang("messages.reset_password")</title>@endsection
 
 @section("content")
     <div class=" card-box">

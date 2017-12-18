@@ -21,4 +21,13 @@ Route::prefix(Config::get("admin"))->group(function() {
 
     /* Admins */
     Route::resource("admins", 'Admin\AdminsController');
+    Route::post('admins/deleteAll', 'Admin\AdminsController@deleteAll');
+
+    /* Roles */
+    Route::resource('roles', 'Admin\RolesController');
+    Route::post('roles/deleteAll', 'Admin\RolesController@deleteAll');
+
+    /* Permissions */
+    Route::resource('permissions', 'Admin\PermissionsController');
+    Route::post('permissions/deleteAll', 'Admin\PermissionsController@deleteAll');
 });

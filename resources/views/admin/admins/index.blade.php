@@ -1,33 +1,45 @@
-@extends("admin.layout")
+@extends("admin.layouts.master")
+
+@section("title")<title>@lang("messages.title") | @lang("messages.all_admins")</title>@endsection
 
 @section("content")
-    <style>
-        tr {
-          cursor: pointer;
-        }
-    </style>
-    <center><h1>All Admins</h1></center>
-    <a href="{{ url(\Config::get("admin")."/admins/create") }}" class="btn btn-success">Create Admin</a>
+    <h4 class="page-title">@lang("messages.all_admins")</h4>
+    <ol class="breadcrumb">
+        <li><a href="{{ url(Config::get("admin")."/") }}">@lang('messages.dashboard')</a></li>
+        <li class="active">@lang('messages.admins')</li>
+    </ol>
+    <a href="{{ url(\Config::get("admin")."/admins/create") }}" class="btn btn-success">@lang('messages.create_admin')</a>
+    <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/admins/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
-    <table class="table table-hover">
+    <table class="table data-table table-hover">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>
+                    <div class="checkbox checkbox-danger">
+                        <input type="checkbox" id="master">
+                        <label for="master"></label>
+                    </div>
+                </th>
+                <th>@lang('messages.name')</th>
+                <th>@lang('messages.email')</th>
+                <th>@lang('messages.phone')</th>
+                <th>@lang('messages.edit')</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach($admins as $admin)
-                <tr onclick="window.location.href='{{ url(\Config::get("admin")."/admins/$admin->slug/") }}'">
+                <tr style="cursor:pointer;" onclick="window.location.href='{{ url(\Config::get("admin")."/admins/$admin->slug/") }}'">
+                    <td onclick="event.stopPropagation();">
+                        <div class="checkbox checkbox-circle checkbox-danger">
+                            <input id="{{ $admin->id }}" type="checkbox" class="sub_chk" data-id="{{$admin->id}}">
+                            <label for="{{ $admin->id }}"></label>
+                        </div>
+                    </td>
                     <td>{{ $admin->name }}</td>
                     <td>{{ $admin->email }}</td>
                     <td>{{ $admin->phone }}</td>
-                    <td><a href="{{ url(\Config::get("admin")."/admins/$admin->slug/edit") }}" class="btn btn-info">Edit</a></td>
-                    <td><a></a></td>
+                    <td><a href="{{ url(\Config::get("admin")."/admins/$admin->slug/edit") }}" class="btn btn-info">@lang('messages.edit')</a></td>
                 </tr>
             @endforeach
         </tbody>

@@ -1,6 +1,6 @@
 @extends("admin.auth.layout")
 
-@section("title")<title>Stgtube Backend | Login</title>@endsection
+@section("title")<title>@lang("messages.title") | @lang("messages.login")</title>@endsection
 
 @section("content")
     <div class="card-box">

@@ -3,8 +3,10 @@
 namespace App;
 
 use App\Notifications\AdminResetPasswordNotification;
+use \File;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use \Storage;
 
 class Admin extends Authenticatable
 {
@@ -23,6 +25,13 @@ class Admin extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AdminResetPasswordNotification($token));
+    }
+
+    public function picture()
+    {
+        if(!File::exists($this->picture))
+            return "Default/default-user-img.jpg";
+        return Storage::url($this->picture);
     }
 
     public function role()

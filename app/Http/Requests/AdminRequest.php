@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminRequest extends FormRequest
@@ -25,14 +26,16 @@ class AdminRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:admins,name',
             'email' => 'required|email|unique:admins,email',
             'phone' => 'required|unique:admins,phone',
             'password' => 'required|min:6|max:64',
-            'role_id' => 'required',
+            'role_id' => 'required|not_in:0',
         ];
-        if($this->method() == "PATCH")
+        if($this->method() == "PATCH") {
             array_pull($rules, "password");
+            $rules["email"] = 'required|email|unique:admins,email,'.$this->admin->id;
+            $rules["phone"] = 'required|unique:admins,phone,'.$this->admin->id;
+        }
         return $rules;
     }
 }

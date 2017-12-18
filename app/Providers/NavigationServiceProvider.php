@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Permission;
 use App\Role;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,7 +16,8 @@ class NavigationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->AdminTitleComposer();
-        $this->AdminFormComposer();
+        $this->AdminsFormComposer();
+        $this->RolesFormComposer();
     }
 
     public function AdminTitleComposer()
@@ -29,11 +31,20 @@ class NavigationServiceProvider extends ServiceProvider
         });
     }
 
-    public function AdminFormComposer()
+    public function AdminsFormComposer()
     {
         view()->composer('admin.admins.form', function ($view) {
             $view->with([
-                'roles' => Role::pluck("name", "id"),
+                'roles' => array_merge(['0'=>"-"], Role::pluck("name", "id")->toArray()),
+            ]);
+        });
+    }
+
+    public function RolesFormComposer()
+    {
+        view()->composer('admin.roles.form', function ($view) {
+            $view->with([
+                'permissions' => Permission::pluck('name', 'id'),
             ]);
         });
     }

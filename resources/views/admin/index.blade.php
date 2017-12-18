@@ -1,8 +1,10 @@
 @extends("admin.layouts.master")
 
-@section("title")<title>Stgtube Backend | Dashboard</title>@endsection
+@section("title")<title>@lang("messages.title") | @lang("messages.dashboard")</title>@endsection
 
 @section("content")
+    <!--
+    Title and Breadcrumb example
     <h4 class="page-title">Blank Page</h4>
     <ol class="breadcrumb">
         <li>
@@ -15,4 +17,5 @@
             Blank Page
         </li>
     </ol>
+    -->
 @endsection
