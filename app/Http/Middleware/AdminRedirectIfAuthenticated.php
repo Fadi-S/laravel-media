@@ -16,7 +16,10 @@ class AdminRedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if (\Auth::guard("admin")->check()) {
-            return redirect(\Config::get("admin"));
+            if(\Auth::guard("admin")->user()->active)
+                return redirect(\Config::get("admin"));
+            else
+                \Auth::guard("admin")->logout();
         }
         return $next($request);
     }

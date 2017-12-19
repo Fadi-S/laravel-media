@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use \Auth;
 
 class LoginController extends Controller
 {
@@ -37,10 +38,18 @@ class LoginController extends Controller
         else
             $field = "slug";
 
+        if(!\App\Admin::where($field, $request->input("login"))->first()->active)
+            return false;
         $request->merge([$field => $request->input('login')]);
         return $this->guard()->attempt(
             $request->only($field, 'password'), $request->filled('remember')
         );
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $user->last_login = Carbon::now();
+        $user->save();
     }
 
     public function logout(Request $request)

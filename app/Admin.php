@@ -29,7 +29,7 @@ class Admin extends Authenticatable
 
     public function picture()
     {
-        if(!File::exists($this->picture))
+        if(!Storage::exists($this->picture))
             return "Default/default-user-img.jpg";
         return Storage::url($this->picture);
     }

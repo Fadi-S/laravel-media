@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Helpers\Slug;
 use App\Http\Requests\AdminRequest;
 use Illuminate\Http\Request;
+use \Auth;
+use \Storage;
 
 class AdminsController extends Controller
 {
@@ -63,5 +65,19 @@ class AdminsController extends Controller
     {
         Admin::whereIn('id', explode(",", $request->post("ids")))->delete();
         return response()->json(['success'=>"Admins Deleted successfully."]);
+    }
+
+    public function picture(Request $request)
+    {
+        $admin = Auth::guard("admin")->user();
+        if ($request->method() == "GET") {
+            Storage::delete($admin->picture);
+            $admin->picture = "";
+        } else if ($request->hasFile("picture")) {
+            Storage::delete($admin->picture);
+            $admin->picture = Storage::putFile("public/Pictures", $request->picture);
+        }
+        $admin->save();
+        return redirect()->back();
     }
 }

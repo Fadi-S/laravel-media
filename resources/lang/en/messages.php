@@ -25,6 +25,7 @@ return [
     'edit' => "Edit",
     'delete' => 'Delete',
     'phone' => 'Phone',
+    'photo' => 'Photo',
     'delete_selected' => 'Delete All Selected',
     'create' => 'Create',
     'submit' => 'Submit',
@@ -39,4 +40,5 @@ return [
     'all_roles' => 'All Roles',
     'create_role' => 'Create Role',
     'create_permission'=> 'Create Permission',
+    'close' => 'Close',
 ];

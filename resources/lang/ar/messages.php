@@ -25,6 +25,7 @@ return [
     'edit' => "تعديل",
     'delete' => 'مسح',
     'phone' => 'التليفون',
+    'photo' => 'الصورة',
     'delete_selected' => 'مسح المختارين',
     'create' => 'صنع',
     'submit' => 'تسجيل',
@@ -39,4 +40,5 @@ return [
     'all_roles' => 'كل الأدوار',
     'create_role' => 'صنع دور',
     'create_permission'=> 'صنع صلاحية',
+    'close' => 'غلق',
 ];

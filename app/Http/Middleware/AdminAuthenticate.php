@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
+use \Auth;
 
 class AdminAuthenticate
 {
@@ -18,6 +18,11 @@ class AdminAuthenticate
     {
         if(!Auth::guard("admin")->check()) {
             return redirect(\Config::get("admin")."/login");
+        }else if(Auth::guard("admin")->check()) {
+            if(!Auth::guard("admin")->user()->active) {
+                Auth::guard("admin")->logout();
+                return redirect(\Config::get("admin") . "/login");
+            }
         }
         return $next($request);
     }

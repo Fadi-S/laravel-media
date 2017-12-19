@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
     @yield("title")
-
+    <link href="{{ url('assets/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" />
     <link href="{{ url('assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/css/core.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/css/components.css') }}" rel="stylesheet" type="text/css" />
@@ -68,10 +68,10 @@
 
                     <ul class="nav navbar-nav navbar-right pull-right">
                         <li class="hidden-xs">
-                            <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
+                            <a href="javascript:void(0);" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
                         </li>
                         <li class="hidden-xs">
-                            <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
+                            <a href="javascript:void(0);" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
                         </li>
                         <li class="dropdown top-menu-item-xs">
                             <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="{{ url(Auth::guard('admin')->user()->picture()) }}" alt="user-img" class="img-circle"> </a>
@@ -208,6 +208,8 @@
 {!! Html::script("assets/plugins/datatables/dataTables.bootstrap.js") !!}
 <link href="{{ url('assets/plugins/multiselect/css/multi-select.css') }}"  rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="{{ url('assets/plugins/multiselect/js/jquery.multi-select.js') }}"></script>
+<script src="{{ url('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js') }}" type="text/javascript"></script>
+<script src="{{ url('assets/plugins/bootstrap-select/js/bootstrap-select.min.js') }}" type="text/javascript"></script>
 
 <script src="{{ url('assets/js/jquery.core.js') }}"></script>
 <script src="{{ url('assets/js/jquery.app.js') }}"></script>

@@ -11,6 +11,7 @@
     <a href="{{ url(\Config::get("admin")."/admins/create") }}" class="btn btn-success">@lang('messages.create_admin')</a>
     <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/admins/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
+    {{ $admins->links() }}
     <table class="table data-table table-hover">
         <thead>
             <tr>
@@ -20,9 +21,11 @@
                         <label for="master"></label>
                     </div>
                 </th>
+                <th>@lang("messages.photo")</th>
                 <th>@lang('messages.name')</th>
                 <th>@lang('messages.email')</th>
                 <th>@lang('messages.phone')</th>
+                <th>@lang('messages.active')</th>
                 <th>@lang('messages.edit')</th>
             </tr>
         </thead>
@@ -36,12 +39,15 @@
                             <label for="{{ $admin->id }}"></label>
                         </div>
                     </td>
+                    <td><img src="{{ $admin->picture() }}" class="thumb-md img-circle"></td>
                     <td>{{ $admin->name }}</td>
                     <td>{{ $admin->email }}</td>
                     <td>{{ $admin->phone }}</td>
+                    <td><span class="fa fa-thumbs-o-{{ ($admin->active) ? "up" : "down" }}" style="font-size:20px;color:{{ ($admin->active) ? "green" : "red" }};"></span></td>
                     <td><a href="{{ url(\Config::get("admin")."/admins/$admin->slug/edit") }}" class="btn btn-info">@lang('messages.edit')</a></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    {{ $admins->links() }}
 @endsection

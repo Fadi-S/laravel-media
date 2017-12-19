@@ -1,6 +1,6 @@
 @extends("admin.layouts.master")
 
-@section("title")<title>@lang("messages.title") | Edit {{ $role->name }}</title>@endsection
+@section("title")<title>@lang("messages.title") | @lang("messages.edit") {{ $role->name }}</title>@endsection
 
 @section("content")
     <h4 class="page-title">@lang("messages.edit") {{ $role->name }}</h4>
