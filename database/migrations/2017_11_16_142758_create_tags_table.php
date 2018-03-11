@@ -14,13 +14,9 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("creator_id");
-            $table->integer("editor_id");
             $table->string("name")->unique(); /* ex: god, church */
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign("creator_id")->references("id")->on("admins");
-            $table->foreign("editor_id")->references("id")->on("admins");
         });
 
         Schema::create('tag_tagged', function (Blueprint $table) {

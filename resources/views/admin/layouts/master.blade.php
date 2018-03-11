@@ -130,11 +130,7 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><span>@lang("messages.all_permissions")</span> <span class="menu-arrow"></span></a>
-                                <ul>
-                                    <li><a href="{{ url(Config::get("admin").'/permissions') }}">@lang("messages.all_permissions")</a></li>
-                                    <li><a href="{{ url(Config::get("admin").'/permissions/create') }}">@lang("messages.create_permission")</a></li>
-                                </ul>
+                               <li><a href="{{ url(Config::get("admin").'/permissions') }}">@lang("messages.all_permissions")</a></li>
                             </li>
                         </ul>
                     </li>

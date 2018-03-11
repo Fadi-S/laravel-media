@@ -14,15 +14,14 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("creator_id");
-            $table->integer("editor_id");
+            $table->integer("writer_id");
             $table->string("title");
             $table->string("slug")->unique();
             $table->text("body");
+            $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign("creator_id")->references("id")->on("admins");
-            $table->foreign("editor_id")->references("id")->on("admins");
+            $table->foreign("writer_id")->references("id")->on("admins");
         });
     }
 

@@ -22,12 +22,9 @@ class CreateMediaTable extends Migration
             $table->integer("occasion_id"); /* chirstmas, easter */
             $table->text("path");
             $table->integer("location_id")->nullable(); /* ex: kenissa margerges sporting, el mor2osseya */
-            $table->integer("created_by");
-            $table->integer("edited_by")->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign("created_by")->references("id")->on("admins");
-            $table->foreign("edited_by")->references("id")->on("admins");
             $table->foreign("file_type")->references("id")->on("file_types");
             $table->foreign("location_id")->references("id")->on("locations");
             $table->foreign("show_type")->references("id")->on("show_types");

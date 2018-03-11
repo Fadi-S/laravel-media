@@ -46,6 +46,10 @@ class AdminsController extends Controller
     {
         $request->request->add(['slug' => (new Slug(new Admin(), "."))->createSlug($request->name)]);
         $admin = Admin::create($request->all());
+
+
+        $admin->adminLog()->create(['admin_id' => auth()->guard('admin')->id()]);
+
         return redirect(\Config::get("admin")."/admins/".$admin->slug);
     }
 

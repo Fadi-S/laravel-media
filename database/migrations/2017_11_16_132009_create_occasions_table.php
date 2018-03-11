@@ -16,6 +16,7 @@ class CreateOccasionsTable extends Migration
             $table->increments('id');
             $table->string("name")->unique(); /* ex: chirstmas, easter */
             $table->string("slug")->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
 

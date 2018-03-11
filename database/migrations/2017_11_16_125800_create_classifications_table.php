@@ -16,6 +16,7 @@ class CreateClassificationsTable extends Migration
             $table->increments('id');
             $table->string("name")->unique();
             $table->string("slug")->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
 

@@ -19,15 +19,14 @@ class CreateBooksTable extends Migration
             $table->integer("pages")->nullable();
             $table->date("published_at")->nullable();
             $table->integer("publisher_id")->nullable();
+            $table->integer("lang_id")->default(1);
             $table->text("path"); /* pdf path */
-            $table->integer("created_by");
-            $table->integer("edited_by")->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             /* RElations between tables */
-            $table->foreign("created_by")->references("id")->on("admins");
-            $table->foreign("edited_by")->references("id")->on("admins");
             $table->foreign("publisher_id")->references("id")->on("publishers");
+            $table->foreign("lang_id")->references("id")->on("languages");
         });
 
         /* Relation between book table o index table */

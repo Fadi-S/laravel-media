@@ -44,7 +44,10 @@ class RolesController extends Controller
     {
         // $request->request->add(['slug' => (new Slug(new Role(), "."))->createSlug($request->name)]);
         $role = Role::create($request->all());
-        $role->permissions()->sync($request->permissions);
+        //$role->permissions()->sync($request->permissions);
+
+        $role->adminLog()->create(['admin_id' => auth()->guard('admin')->id() , 'message' => 'new role has been added']);
+
         flash()->success("Role Created Successfully");
         return redirect(\Config::get("admin")."/roles/".$role->id."/edit");
     }

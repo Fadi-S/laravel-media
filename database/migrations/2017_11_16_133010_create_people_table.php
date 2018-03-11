@@ -21,8 +21,7 @@ class CreatePeopleTable extends Migration
             $table->text("bio")->nullable(); /* Biography */
             $table->date("birthday")->nullable();
             $table->date("passed_away")->nullable(); /* death day (law etnaya7) */
-            $table->integer("created_by");
-            $table->integer("edited_by")->nullable();
+            $table->softDeletes();
             $table->integer("person_type_id"); /* ex: Singer, Choir, Pope */
             $table->timestamps();
         });

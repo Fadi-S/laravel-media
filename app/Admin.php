@@ -4,16 +4,17 @@ namespace App;
 
 use App\Notifications\AdminResetPasswordNotification;
 use \File;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \Storage;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     protected $table = "admins";
-    protected $dates = ['last_activity', 'last_login'];
+    protected $dates = ['last_activity', 'last_login', 'deleted_at'];
     protected $hidden = ['password', 'remember_token'];
     protected $fillable = ['slug', 'role_id', 'active', 'name', 'phone', 'email', 'password', 'picture'];
 
@@ -42,5 +43,10 @@ class Admin extends Authenticatable
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function adminLog()
+    {
+        return $this->morphMany('App\AdminLog' , 'logable');
     }
 }

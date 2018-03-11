@@ -44,7 +44,7 @@ class NavigationServiceProvider extends ServiceProvider
     {
         view()->composer('admin.roles.form', function ($view) {
             $view->with([
-                'permissions' => Permission::pluck('name', 'id'),
+                'permissions' => Permission::permissions(),
             ]);
         });
     }

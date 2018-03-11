@@ -25,6 +25,7 @@ class CreateAdminsTable extends Migration
             $table->timestamp("last_login")->nullable(); /* zay el users */
             $table->timestamp("last_activity")->nullable(); /* zay el users */
             $table->rememberToken(); /* 7aga bet5ali el user yefdal logged in */
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign("role_id")->references("id")->on("roles");

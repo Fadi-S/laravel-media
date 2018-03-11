@@ -11,6 +11,7 @@
     <a href="{{ url(\Config::get("admin")."/roles/create") }}" class="btn btn-success">@lang('messages.create_role')</a>
     <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/roles/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
+    <div class="card-box table-responsize">
     <table class="table data-table">
         <thead>
             <tr>
@@ -40,4 +41,5 @@
             @endforeach
         </tbody>
     </table>
+</div>
 @endsection

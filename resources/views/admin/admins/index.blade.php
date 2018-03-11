@@ -12,6 +12,7 @@
     <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/admins/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
     {{ $admins->links() }}
+    <div class="card-box table-responsize">
     <table class="table data-table table-hover">
         <thead>
             <tr>
@@ -49,5 +50,6 @@
             @endforeach
         </tbody>
     </table>
+    </div>
     {{ $admins->links() }}
 @endsection

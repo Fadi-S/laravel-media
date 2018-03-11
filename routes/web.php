@@ -30,5 +30,4 @@ Route::prefix(Config::get("admin"))->group(function() {
 
     /* Permissions */
     Route::resource('permissions', 'Admin\PermissionsController');
-    Route::post('permissions/deleteAll', 'Admin\PermissionsController@deleteAll');
 });
