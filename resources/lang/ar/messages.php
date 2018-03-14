@@ -41,4 +41,6 @@ return [
     'create_role' => 'صنع دور',
     'create_permission'=> 'صنع صلاحية',
     'close' => 'غلق',
+    'publishers' => 'الناشرين',
+    'create_publisher' => 'صنع ناشر',
 ];

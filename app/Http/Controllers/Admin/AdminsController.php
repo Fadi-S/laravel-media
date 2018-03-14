@@ -55,6 +55,7 @@ class AdminsController extends Controller
 
     public function update(AdminRequest $request, Admin $admin)
     {
+        $request['slug'] = (new Slug($admin, '-'))->createSlug($request->name);
         $admin->update($request->except("password"));
         return redirect(\Config::get("admin")."/admins/".$admin->slug."/edit");
     }

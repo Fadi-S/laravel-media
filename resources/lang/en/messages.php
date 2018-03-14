@@ -41,4 +41,6 @@ return [
     'create_role' => 'Create Role',
     'create_permission'=> 'Create Permission',
     'close' => 'Close',
+    'publishers' => 'Publishers',
+    'create_publisher' => 'Create Publisher',
 ];

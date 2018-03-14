@@ -17,6 +17,7 @@ class CreateFileTypesTable extends Migration
             $table->increments('id');
             $table->string("name")->unique(); /* Hymns, Taranim, Preachs(3ezat), Videos */
             $table->string("slug")->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

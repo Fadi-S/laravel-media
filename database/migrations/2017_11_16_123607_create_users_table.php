@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string("name");
             $table->string("email")->unique();
+            $table->string("slug")->unique();
             $table->string("password");
             $table->timestamp("last_activity")->nullable(); /* Last activity time to check if user is online */
             $table->timestamp("last_login")->nullable(); /* To check if user uses the site constantly */

@@ -17,6 +17,7 @@ class CreatePublishersTable extends Migration
             $table->increments('id');
             $table->string("name")->unique(); /* ex: nahdet masr */
             $table->string("slug")->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

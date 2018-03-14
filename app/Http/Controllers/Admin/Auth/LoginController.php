@@ -38,8 +38,11 @@ class LoginController extends Controller
         else
             $field = "slug";
 
-        if(!\App\Admin::where($field, $request->input("login"))->first()->active)
-            return false;
+        $admin = \App\Admin::where($field, $request->input("login"));
+        if($admin->exists()) {
+            if (!$admin->first()->active)
+                return false;
+        }
         $request->merge([$field => $request->input('login')]);
         return $this->guard()->attempt(
             $request->only($field, 'password'), $request->filled('remember')

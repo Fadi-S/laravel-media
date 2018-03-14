@@ -17,6 +17,7 @@ class CreatePeopleTypesTable extends Migration
             $table->increments('id');
             $table->string("name")->unique(); /* Singer, Pope */
             $table->string("slug")->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

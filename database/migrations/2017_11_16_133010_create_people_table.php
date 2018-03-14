@@ -14,7 +14,7 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique(); /* ex: Pope Shenouda the third, Ibrahim Ayad */
+            $table->string("name"); /* ex: Pope Shenouda the third, Ibrahim Ayad */
             $table->string("slug")->unique();
             $table->text("photo")->nullable();
             $table->text("cover_photo")->nullable();

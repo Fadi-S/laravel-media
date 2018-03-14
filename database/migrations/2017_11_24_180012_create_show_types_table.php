@@ -16,6 +16,7 @@ class CreateShowTypesTable extends Migration
         Schema::create('show_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name")->unique(); /* Hymns, Preachs(3ezat), Taranim, Videos */
+            $table->softDeletes();
             $table->timestamps();
         });
     }

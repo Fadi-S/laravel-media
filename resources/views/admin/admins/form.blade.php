@@ -1,28 +1,32 @@
-<div>
-    <div class="form-group {{ ($errors->has("name")) ? " has-error" : "" }}">
-        {!! Form::label("name", __("messages.name")." *") !!}
-        {!! Form::text("name", null, ['class'=>'form-control', 'required']) !!}
-    </div>
-
-    <div class="form-group {{ ($errors->has("email")) ? " has-error" : "" }}">
-        {!! Form::label("email", __("messages.email")." *") !!}
-        {!! Form::email("email", null, ['class'=>'form-control', 'required']) !!}
-    </div>
-
-    <div class="form-group {{ ($errors->has("phone")) ? " has-error" : "" }}">
-        {!! Form::label("phone", __("messages.phone")." *") !!}
-        {!! Form::text("phone", null, ['class'=>'form-control', "required"]) !!}
-    </div>
-    @if($create)
-        <div class="form-group {{ ($errors->has("password")) ? " has-error" : "" }}">
-            {!! Form::label("password", __("messages.password")." *") !!}
-            {!! Form::password("password", ['class'=>'form-control']) !!}
+<div class="card-box">
+    <div class="row">
+        <div class="col-md-6 form-group {{ ($errors->has("name")) ? " has-error" : "" }}">
+            {!! Form::label("name", __("messages.name")." *") !!}
+            {!! Form::text("name", null, ['class'=>'form-control', 'required']) !!}
         </div>
-    @endif
 
-    <div class="form-group {{ ($errors->has("role_id")) ? " has-error" : "" }}">
-        {!! Form::label("role_id", __("messages.role")." *") !!}
-        {!! Form::select("role_id", $roles, null, ['class'=>'selectpicker', 'data-style'=>"btn-purple btn-custom"]) !!}
+        <div class="col-md-6 form-group {{ ($errors->has("email")) ? " has-error" : "" }}">
+            {!! Form::label("email", __("messages.email")." *") !!}
+            {!! Form::email("email", null, ['class'=>'form-control', 'required']) !!}
+        </div>
+
+        <div class="col-md-6 form-group {{ ($errors->has("phone")) ? " has-error" : "" }}">
+            {!! Form::label("phone", __("messages.phone")." *") !!}
+            {!! Form::text("phone", null, ['class'=>'form-control', "required"]) !!}
+        </div>
+        @if($create)
+            <div class="col-md-6 form-group {{ ($errors->has("password")) ? " has-error" : "" }}">
+                {!! Form::label("password", __("messages.password")." *") !!}
+                {!! Form::password("password", ['class'=>'form-control']) !!}
+            </div>
+        @endif
+
+        <div class="col-md-6 form-group {{ ($errors->has("role_id")) ? " has-error" : "" }}">
+            {!! Form::label("role_id", __("messages.role")." *") !!}
+            {!! Form::select("role_id", $roles, null, ['class'=>'form-control']) !!}
+        </div>
+
+
     </div>
 
     <div class="form-group">

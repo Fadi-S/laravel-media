@@ -30,4 +30,8 @@ Route::prefix(Config::get("admin"))->group(function() {
 
     /* Permissions */
     Route::resource('permissions', 'Admin\PermissionsController');
+
+    /* Publishers */
+    Route::resource('publishers', 'Admin\PublishersController');
+    Route::post('publishers/deleteAll', 'Admin\PublishersController@deleteAll');
 });

@@ -20,7 +20,7 @@ class CreateOccasionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('occasion_media', function(Blueprint $table) {
+        Schema::create('media_occasion', function(Blueprint $table) {
             $table->integer("occasion_id");
             $table->integer("media_id");
             $table->primary(["media_id", "occasion_id"]);
@@ -35,6 +35,6 @@ class CreateOccasionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('occasions');
-        Schema::dropIfExists('occasion_media');
+        Schema::dropIfExists('media_occasion');
     }
 }

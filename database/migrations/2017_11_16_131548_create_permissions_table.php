@@ -17,12 +17,6 @@ class CreatePermissionsTable extends Migration
             $table->integer('role_id');
             $table->primary(['perm_id', 'role_id']);
         });
-
-        Schema::create('admin_permission', function (Blueprint $table) {
-            $table->integer('perm_id');
-            $table->integer('admin_id');
-            $table->primary(['admin_id', 'perm_id']);
-        });
     }
 
     /**
@@ -33,6 +27,5 @@ class CreatePermissionsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('permission_role');
-        Schema::dropIfExists('admin_permission');
     }
 }

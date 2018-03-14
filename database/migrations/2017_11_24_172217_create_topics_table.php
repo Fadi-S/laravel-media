@@ -17,6 +17,7 @@ class CreateTopicsTable extends Migration
             $table->increments('id');
             $table->string("name")->unique(); /* ex: love, faith, kindness */
             $table->string("slug")->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
         

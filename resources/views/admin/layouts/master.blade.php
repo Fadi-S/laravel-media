@@ -120,6 +120,14 @@
                     </li>
 
                     <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-secret"></i> <span> @lang("messages.publishers") </span> <span class="menu-arrow"></span> </a>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url(Config::get("admin")."/publishers") }}">@lang("messages.publishers")</a></li>
+                            <li><a href="{{ url(Config::get("admin")."/publishers/create") }}">@lang("messages.create_publisher")</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-cog"></i><span> @lang("messages.settings") </span> <span class="menu-arrow"></span> </a>
                         <ul>
                             <li class="has_sub">
