@@ -12,6 +12,6 @@ class RoleDatabaseSeeder extends Seeder
      */
     public function run()
     {
-       Role::create(['name'=>'مدير']);
+       Role::createDefault();
     }
 }
