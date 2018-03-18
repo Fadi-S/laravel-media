@@ -34,4 +34,8 @@ Route::prefix(Config::get("admin"))->group(function() {
     /* Publishers */
     Route::resource('publishers', 'Admin\PublishersController');
     Route::post('publishers/deleteAll', 'Admin\PublishersController@deleteAll');
+
+    /* People Types */
+    Route::resource('people/types', 'Admin\PeopleTypesController');
+    Route::post('people/types/deleteAll', 'Admin\PeopleTypesController@deleteAll');
 });

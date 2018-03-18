@@ -1,14 +1,14 @@
 @extends("admin.layouts.master")
 
-@section("title")<title>@lang("messages.title") | @lang("messages.all_admins")</title>@endsection
+@section("title")<title>@lang("messages.title") | @lang("messages.all") @lang("messages.admins")</title>@endsection
 
 @section("content")
-    <h4 class="page-title">@lang("messages.all_admins")</h4>
+    <h4 class="page-title">@lang("messages.all") @lang("messages.admins")</h4>
     <ol class="breadcrumb">
         <li><a href="{{ url(Config::get("admin")."/") }}">@lang('messages.dashboard')</a></li>
         <li class="active">@lang('messages.admins')</li>
     </ol>
-    <a href="{{ url(\Config::get("admin")."/admins/create") }}" class="btn btn-success">@lang('messages.create_admin')</a>
+    <a href="{{ url(\Config::get("admin")."/admins/create") }}" class="btn btn-success">@lang("messages.create") @lang("messages.admin")</a>
     <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/admins/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
     {{ $admins->links() }}

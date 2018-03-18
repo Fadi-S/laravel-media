@@ -8,7 +8,7 @@
         <li><a href="{{ url(Config::get("admin")."/") }}">@lang('messages.dashboard')</a></li>
         <li class="active">@lang('messages.publishers')</li>
     </ol>
-    <a href="{{ url(\Config::get("admin")."/publishers/create") }}" class="btn btn-success">@lang('messages.create_publisher')</a>
+    <a href="{{ url(\Config::get("admin")."/publishers/create") }}" class="btn btn-success">@lang('messages.create') @lang('messages.publisher')</a>
     <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/publishers/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
     {{ $publishers->links() }}

@@ -114,16 +114,33 @@
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-secret"></i> <span> @lang("messages.admins") </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url(Config::get("admin")."/admins") }}">@lang("messages.all_admins")</a></li>
-                            <li><a href="{{ url(Config::get("admin")."/admins/create") }}">@lang("messages.create_admin")</a></li>
+                            <li><a href="{{ url(Config::get("admin")."/admins") }}">@lang("messages.all")  @lang("messages.admins")</a></li>
+                            <li><a href="{{ url(Config::get("admin")."/admins/create") }}">@lang("messages.create")  @lang("messages.admin")</a></li>
                         </ul>
                     </li>
 
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-secret"></i> <span> @lang("messages.publishers") </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url(Config::get("admin")."/publishers") }}">@lang("messages.publishers")</a></li>
-                            <li><a href="{{ url(Config::get("admin")."/publishers/create") }}">@lang("messages.create_publisher")</a></li>
+                            <li><a href="{{ url(Config::get("admin")."/publishers") }}">@lang("messages.all")  @lang("messages.publishers")</a></li>
+                            <li><a href="{{ url(Config::get("admin")."/publishers/create") }}">@lang("messages.create")  @lang("messages.publisher")</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-cog"></i><span> @lang("messages.people") </span> <span class="menu-arrow"></span> </a>
+                        <ul>
+                            <li class="has_sub">
+                            <li><a href="{{ url(Config::get("admin").'/people') }}">@lang("messages.all") @lang("messages.people")</a></li>
+                            <li><a href="{{ url(Config::get("admin").'/people/create') }}">@lang("messages.create") @lang("messages.person")</a></li>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><span>@lang("messages.types")</span>  <span class="menu-arrow"></span></a>
+                                <ul>
+                                    <li><a href="{{ url(Config::get("admin").'/people/types') }}">@lang("messages.all") @lang("messages.types")</a></li>
+                                    <li><a href="{{ url(Config::get("admin").'/people/types/create') }}">@lang("messages.create") @lang("messages.type")</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 
@@ -133,12 +150,12 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><span>@lang("messages.roles")</span>  <span class="menu-arrow"></span></a>
                                 <ul>
-                                    <li><a href="{{ url(Config::get("admin").'/roles') }}">@lang("messages.all_roles")</a></li>
-                                    <li><a href="{{ url(Config::get("admin").'/roles/create') }}">@lang("messages.create_role")</a></li>
+                                    <li><a href="{{ url(Config::get("admin").'/roles') }}">@lang("messages.all") @lang("messages.roles")</a></li>
+                                    <li><a href="{{ url(Config::get("admin").'/roles/create') }}">@lang("messages.create")  @lang("messages.role")</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                               <li><a href="{{ url(Config::get("admin").'/permissions') }}">@lang("messages.all_permissions")</a></li>
+                               <li><a href="{{ url(Config::get("admin").'/permissions') }}">@lang("messages.all")  @lang("messages.permissions")</a></li>
                             </li>
                         </ul>
                     </li>

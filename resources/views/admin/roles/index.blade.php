@@ -1,14 +1,14 @@
 @extends("admin.layouts.master")
 
-@section("title")<title>@lang("messages.title") | @lang("messages.all_roles")</title>@endsection
+@section("title")<title>@lang("messages.title") | @lang("messages.all") @lang("messages.roles")</title>@endsection
 
 @section("content")
-    <h4 class="page-title">@lang("messages.all_roles")</h4>
+    <h4 class="page-title">@lang("messages.all") @lang("messages.roles")</h4>
     <ol class="breadcrumb">
         <li><a href="{{ url(Config::get("admin")."/") }}">@lang('messages.dashboard')</a></li>
         <li class="active">@lang('messages.roles')</li>
     </ol>
-    <a href="{{ url(\Config::get("admin")."/roles/create") }}" class="btn btn-success">@lang('messages.create_role')</a>
+    <a href="{{ url(\Config::get("admin")."/roles/create") }}" class="btn btn-success">@lang("messages.create") @lang("messages.role")</a>
     <button class="btn btn-danger delete_all" data-url="{{ url(Config::get("admin").'/roles/deleteAll') }}">@lang('messages.delete_selected')</button>
     <br><br>
     <div class="card-box table-responsize">
