@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 
 class PeopleTypesController extends Controller
 {
-    public function index()
+    public function index(PeopleType $types)
     {
-        $types = PeopleType::paginate(100);
+        $types = PeopleType;
         return view("admin.peopleTypes.index", compact('types'));
     }
 
@@ -20,7 +20,7 @@ class PeopleTypesController extends Controller
         return view("admin.peopleTypes.create");
     }
 
-    public function show(PeopleType $type)
+    public function show()
     {
         return view("admin.peopleTypes.show", compact('type'));
     }
